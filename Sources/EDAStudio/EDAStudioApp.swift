@@ -26,7 +26,7 @@ struct StudioView: View {
     var body: some View {
         NavigationSplitView {
             VStack(alignment: .leading, spacing: 8) {
-                HStack { Image(systemName: "cpu.fill").font(.title).foregroundStyle(.mint); VStack(alignment: .leading) { Text("OFFLINE EDA").font(.headline); Text("STUDIO  /  0.1.0").font(.caption).foregroundStyle(.secondary) } }.padding(16)
+                HStack { Image(systemName: "cpu.fill").font(.title).foregroundStyle(.mint); VStack(alignment: .leading) { Text("OFFLINE EDA").font(.headline); Text("STUDIO  /  0.1.1").font(.caption).foregroundStyle(.secondary) } }.padding(16)
                 List(selection: $model.section) {
                     Section("工作台") { ForEach(sections, id: \.0) { item in Label(item.1, systemImage: item.2).tag(item.0) } }
                     Section("本地项目") {
@@ -144,21 +144,22 @@ struct BoardView: View {
                     let points = board.lines.flatMap { [$0.start, $0.end] } + board.pads.map(\.center)
                     let minX = (points.map(\.x).min() ?? 0) - 4, maxX = (points.map(\.x).max() ?? 60) + 4
                     let minY = (points.map(\.y).min() ?? 0) - 4, maxY = (points.map(\.y).max() ?? 40) + 4
-                    let scale = min(size.width / max(1, maxX - minX), size.height / max(1, maxY - minY))
-                    let ox = (size.width - (maxX - minX) * scale) / 2, oy = (size.height - (maxY - minY) * scale) / 2
-                    func point(_ p: BoardPoint) -> CGPoint { .init(x: ox + (p.x - minX) * scale, y: oy + (p.y - minY) * scale) }
+                    let scale: Double = min(Double(size.width) / max(1, maxX - minX), Double(size.height) / max(1, maxY - minY))
+                    let ox = (Double(size.width) - (maxX - minX) * scale) / 2, oy = (Double(size.height) - (maxY - minY) * scale) / 2
+                    func point(_ p: BoardPoint) -> CGPoint { .init(x: CGFloat(ox + (p.x - minX) * scale), y: CGFloat(oy + (p.y - minY) * scale)) }
                     for x in stride(from: 0.0, through: size.width, by: 20) { for y in stride(from: 0.0, through: size.height, by: 20) {
                         context.fill(Path(ellipseIn: CGRect(x: x, y: y, width: 1, height: 1)), with: .color(.white.opacity(0.12)))
                     } }
                     for line in board.lines where (line.layer != "F.Cu" || front) && (line.layer != "B.Cu" || back) {
                         var path = Path(); path.move(to: point(line.start)); path.addLine(to: point(line.end))
                         let color: Color = line.layer == "F.Cu" ? .orange : line.layer == "B.Cu" ? .cyan : .mint
-                        context.stroke(path, with: .color(color), style: StrokeStyle(lineWidth: max(1, line.width * scale), lineCap: .round))
+                        context.stroke(path, with: .color(color), style: StrokeStyle(lineWidth: CGFloat(max(1, line.width * scale)), lineCap: .round))
                     }
                     if showPads { for pad in board.pads {
                         let p = point(pad.center)
                         var transformed = context; transformed.translateBy(x: p.x, y: p.y); transformed.rotate(by: .degrees(-pad.angle))
-                        transformed.fill(Path(roundedRect: CGRect(x: -pad.width * scale / 2, y: -pad.height * scale / 2, width: pad.width * scale, height: pad.height * scale), cornerRadius: 3), with: .color(.yellow))
+                        let pw = CGFloat(pad.width * scale), ph = CGFloat(pad.height * scale)
+                        transformed.fill(Path(roundedRect: CGRect(x: -pw / 2, y: -ph / 2, width: pw, height: ph), cornerRadius: 3), with: .color(.yellow))
                     } }
                 }.frame(height: 420).background(Color(red: 0.025, green: 0.055, blue: 0.08), in: RoundedRectangle(cornerRadius: 14))
                 Text("\(board.references.joined(separator: " · "))").font(.caption.monospaced()).foregroundStyle(.secondary)

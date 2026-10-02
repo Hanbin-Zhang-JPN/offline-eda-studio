@@ -3,7 +3,7 @@ import EDACore
 
 func usage() {
     print("""
-    Offline EDA Studio 0.1.0 · 本地离线 EDA 工作台
+    Offline EDA Studio 0.1.1 · 本地离线 EDA 工作台
     eda doctor
     eda inspect PROJECT_DIRECTORY
     eda create NEW_DIRECTORY NAME TEMPLATE_DIRECTORY
