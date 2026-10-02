@@ -28,7 +28,14 @@ struct Feature: Codable, Identifiable {
     @Published var features = [Feature]()
     var project: EDAProject? { projects.first { $0.id == selectedID } }
     var engine: KiCadEngine? { KiCadEngine.discover(explicit: enginePath.isEmpty ? nil : enginePath) }
-    var resources: URL { Bundle.module.url(forResource: "Resources", withExtension: nil)! }
+    var resources: URL {
+        // Older SwiftPM accessors search the .app root instead of Contents/Resources.
+        // Resolve the sealed app resource bundle explicitly before the development fallback.
+        if let base = Bundle.main.resourceURL,
+           let packaged = Bundle(url: base.appendingPathComponent("OfflineEDAStudio_EDAStudio.bundle")),
+           let directory = packaged.url(forResource: "Resources", withExtension: nil) { return directory }
+        return Bundle.module.url(forResource: "Resources", withExtension: nil)!
+    }
 
     init() {
         for path in UserDefaults.standard.stringArray(forKey: "recentProjects") ?? [] {
