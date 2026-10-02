@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "name": "LED · 双层板示例",
+  "projectFile": "design.kicad_pro",
+  "schematicFile": "design.kicad_sch",
+  "boardFile": "design.kicad_pcb",
+  "partsFile": "parts.json",
+  "harnessFile": "harness.json"
+}

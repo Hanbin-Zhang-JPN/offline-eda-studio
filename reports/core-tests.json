@@ -1,0 +1,81 @@
+{
+  "failures" : [
+
+  ],
+  "passed" : true,
+  "schemaVersion" : 1,
+  "tests" : [
+    {
+      "name" : "testPathTraversalRejected",
+      "passed" : true
+    },
+    {
+      "name" : "testSymlinkEscapeRejected",
+      "passed" : true
+    },
+    {
+      "name" : "testUnsupportedManifestRejected",
+      "passed" : true
+    },
+    {
+      "name" : "testCreateNeverOverwritesDirectory",
+      "passed" : true
+    },
+    {
+      "name" : "testSnapshotDetectsTampering",
+      "passed" : true
+    },
+    {
+      "name" : "testSnapshotsExcludeOutputsAndPreviousSnapshots",
+      "passed" : true
+    },
+    {
+      "name" : "testBOMGroupIdentityAndDNP",
+      "passed" : true
+    },
+    {
+      "name" : "testBOMDuplicateAndInvalidPriceRejected",
+      "passed" : true
+    },
+    {
+      "name" : "testCSVEscapesQuotesAndNeutralizesFormula",
+      "passed" : true
+    },
+    {
+      "name" : "testHarnessChecksUnknownAndDuplicatePins",
+      "passed" : true
+    },
+    {
+      "name" : "testHarnessGoodCutList",
+      "passed" : true
+    },
+    {
+      "name" : "testMicrostripReferenceAndInputs",
+      "passed" : true
+    },
+    {
+      "name" : "testSExpressionEscapesAndMalformedInput",
+      "passed" : true
+    },
+    {
+      "name" : "testPreviewUsesActualGeometry",
+      "passed" : true
+    },
+    {
+      "name" : "testProcessCapturesLargeOutputWithoutDeadlock",
+      "passed" : true
+    },
+    {
+      "name" : "testProcessTimeout",
+      "passed" : true
+    },
+    {
+      "name" : "testExplicitMissingEngineNeverFallsBack",
+      "passed" : true
+    },
+    {
+      "name" : "testReportsRejectFalseSuccess",
+      "passed" : true
+    }
+  ]
+}

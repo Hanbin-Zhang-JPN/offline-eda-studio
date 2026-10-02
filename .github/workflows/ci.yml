@@ -1,0 +1,28 @@
+name: macOS build and core checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  macos:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare local resources
+        run: ./scripts/prepare-resources.sh
+      - name: Build and core tests
+        run: |
+          ./scripts/swift.sh build
+          EDA_TEST_REPORT=reports/core-tests.json ./scripts/swift.sh run EDASelfTests
+          python3 scripts/check-coverage.py
+      - name: Build app
+        run: ./scripts/build-app.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: offline-eda-macos
+          path: |
+            dist/*.zip
+            dist/eda
+            reports/core-tests.json

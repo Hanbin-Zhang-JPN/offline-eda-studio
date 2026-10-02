@@ -1,0 +1,29 @@
+[
+  {
+    "reference": "J1",
+    "value": "Input",
+    "footprint": "OfflineEDA:Header2",
+    "mpn": "",
+    "manufacturer": "",
+    "unitPrice": 0,
+    "dnp": false
+  },
+  {
+    "reference": "R1",
+    "value": "330",
+    "footprint": "OfflineEDA:Axial2",
+    "mpn": "",
+    "manufacturer": "",
+    "unitPrice": 0,
+    "dnp": false
+  },
+  {
+    "reference": "D1",
+    "value": "LED",
+    "footprint": "OfflineEDA:Axial2",
+    "mpn": "",
+    "manufacturer": "",
+    "unitPrice": 0,
+    "dnp": false
+  }
+]

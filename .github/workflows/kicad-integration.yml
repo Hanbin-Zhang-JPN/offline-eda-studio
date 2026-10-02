@@ -1,0 +1,25 @@
+name: Real KiCad 10 integration
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  engine:
+    runs-on: macos-14
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./scripts/prepare-resources.sh && ./scripts/swift.sh build
+      - name: Download and verify official engine
+        run: ./scripts/fetch-engine.sh
+      - name: Mount read-only and test
+        run: |
+          mkdir -p "$RUNNER_TEMP/kicad-engine"
+          hdiutil attach -readonly -nobrowse -mountpoint "$RUNNER_TEMP/kicad-engine" engine/kicad-unified-universal-10.0.6.dmg
+          export KICAD_CLI="$RUNNER_TEMP/kicad-engine/KiCad/KiCad.app/Contents/MacOS/kicad-cli"
+          python3 scripts/integration-test.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: real-engine-evidence
+          path: reports/integration.json

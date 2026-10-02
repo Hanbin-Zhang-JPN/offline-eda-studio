@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "platform": "arm64",
+  "engine": "KiCad: 10.0.6",
+  "tests": [
+    {
+      "name": "project-open",
+      "passed": true,
+      "detail": "Unicode and spaces in paths",
+      "seconds": 0
+    },
+    {
+      "name": "snapshot-integrity",
+      "passed": true,
+      "detail": "SHA-256 revalidation",
+      "seconds": 0
+    },
+    {
+      "name": "offline-data-exports",
+      "passed": true,
+      "detail": "Planning BOM and point-to-point wire list",
+      "seconds": 0
+    },
+    {
+      "name": "job-erc",
+      "passed": true,
+      "detail": "1 nonempty files; export readability except reports needs independent production acceptance",
+      "seconds": 1.691
+    },
+    {
+      "name": "job-drc",
+      "passed": true,
+      "detail": "1 nonempty files; export readability except reports needs independent production acceptance",
+      "seconds": 3.308
+    },
+    {
+      "name": "job-gerbers",
+      "passed": true,
+      "detail": "10 nonempty files; export readability except reports needs independent production acceptance",
+      "seconds": 0.716
+    },
+    {
+      "name": "job-drill",
+      "passed": true,
+      "detail": "1 nonempty files; export readability except reports needs independent production acceptance",
+      "seconds": 0.658
+    },
+    {
+      "name": "job-positions",
+      "passed": true,
+      "detail": "1 nonempty files; export readability except reports needs independent production acceptance",
+      "seconds": 0.667
+    },
+    {
+      "name": "job-step",
+      "passed": true,
+      "detail": "1 nonempty files; export readability except reports needs independent production acceptance",
+      "seconds": 0.671
+    },
+    {
+      "name": "job-boardSVG",
+      "passed": true,
+      "detail": "1 nonempty files; export readability except reports needs independent production acceptance",
+      "seconds": 0.692
+    },
+    {
+      "name": "job-schematicPDF",
+      "passed": true,
+      "detail": "1 nonempty files; export readability except reports needs independent production acceptance",
+      "seconds": 0.645
+    },
+    {
+      "name": "job-netlist",
+      "passed": true,
+      "detail": "1 nonempty files; export readability except reports needs independent production acceptance",
+      "seconds": 0.634
+    },
+    {
+      "name": "job-schematicBOM",
+      "passed": true,
+      "detail": "1 nonempty files; export readability except reports needs independent production acceptance",
+      "seconds": 0.654
+    },
+    {
+      "name": "job-ipc2581",
+      "passed": true,
+      "detail": "1 nonempty files; export readability except reports needs independent production acceptance",
+      "seconds": 0.711
+    },
+    {
+      "name": "job-odb",
+      "passed": true,
+      "detail": "1 nonempty files; export readability except reports needs independent production acceptance",
+      "seconds": 0.7
+    },
+    {
+      "name": "manufacturing-passed",
+      "passed": true,
+      "detail": "ERC+DRC+schematic parity gate, original sources, output hashes including STEP",
+      "seconds": 3.946
+    },
+    {
+      "name": "unconnected-board-blocked",
+      "passed": true,
+      "detail": "Removed track prevents manufacturing release and preserves failure report",
+      "seconds": 0
+    },
+    {
+      "name": "multilayer-release-blocked",
+      "passed": true,
+      "detail": "v0.1 never exports incomplete inner copper",
+      "seconds": 0
+    },
+    {
+      "name": "tampered-snapshot-blocked",
+      "passed": true,
+      "detail": "Changed file rejected",
+      "seconds": 0
+    }
+  ],
+  "scope": "Single self-contained two-layer fixture and negative gates; not full professional feature acceptance.",
+  "passed": true
+}

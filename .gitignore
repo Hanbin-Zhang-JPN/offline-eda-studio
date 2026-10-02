@@ -1,0 +1,16 @@
+.DS_Store
+.build/
+.swiftpm/
+dist/
+engine/
+*.dmg
+*.zip
+*.log
+examples/**/outputs/
+examples/**/.eda-snapshots/
+*.kicad_prl
+*.lck
+*-backups/
+
+__pycache__/
+*.pyc

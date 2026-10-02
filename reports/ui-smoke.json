@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "platform": "arm64 macOS",
+  "appVersion": "0.1.0",
+  "method": "Native app accessibility and screenshot inspection via cua",
+  "passed": true,
+  "checks": [
+    "Packaged app opens with bundled resources",
+    "Create new project using Save dialog at workspace/dist",
+    "Project loads 2 copper layers and 3 board components",
+    "PCB preview draws original board outline, pads and actual tracks",
+    "Planning DNP saved and restored via UI",
+    "Harness shows 2 connectors, 2 valid point-to-point wires"
+  ],
+  "limits": "Not full editor, all UI pages, system offline capture or professional feature acceptance."
+}

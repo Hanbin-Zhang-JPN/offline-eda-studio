@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "connectors": [
+    {
+      "id": "J1",
+      "pins": 2,
+      "partNumber": "demo-input"
+    },
+    {
+      "id": "J2",
+      "pins": 2,
+      "partNumber": "demo-supply"
+    }
+  ],
+  "wires": [
+    {
+      "id": "W1",
+      "from": {
+        "connector": "J1",
+        "pin": 1
+      },
+      "to": {
+        "connector": "J2",
+        "pin": 1
+      },
+      "net": "VCC",
+      "lengthMM": 150,
+      "awg": 24,
+      "color": "red"
+    },
+    {
+      "id": "W2",
+      "from": {
+        "connector": "J1",
+        "pin": 2
+      },
+      "to": {
+        "connector": "J2",
+        "pin": 2
+      },
+      "net": "GND",
+      "lengthMM": 150,
+      "awg": 24,
+      "color": "black"
+    }
+  ]
+}
